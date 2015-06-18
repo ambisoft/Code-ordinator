@@ -1,0 +1,12 @@
+<% if target %>
+    <% if target.errors.any? %>
+        <div class="infobox">
+          <h3>Notifications</h3>
+          <ol class="notifications">
+            <% target.errors.messages.each do |msg| %>
+                <li><%= t("form.fields.#{msg[0]}") %> <%= msg[1][0] %></li>
+            <% end %>
+          </ol>
+        </div>
+    <% end %>
+<% end %>

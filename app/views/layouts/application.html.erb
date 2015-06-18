@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="application-name" content="Coordinator">
+
+  <link rel="author" href="http://schizohatter.tk">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <title itemprop="name"><%= t('views.application.title') %></title>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="header">
+  <h1><a href="<%= root_path %>" rel="index"><%= t('views.application.title') %></a></h1>
+  <p><%= t('views.application.subtitle') %></p>
+</header>
+
+<main id="main">
+
+  <div class="flashbox" id="flashbox">
+    <% #'<p class="flash-message success">Some joint appeared! <span class="info">You can now smoke it</span></p>'.html_safe %>
+    <% flash.each do |type, msg| %>
+        <p class="flash-message <%= type %>">
+            <%= msg[0] %>
+            <% if msg[1] %>
+                <span class="info"><%= msg[1] %></span>
+            <% end %>
+        </p>
+    <% end %>
+  </div>
+
+<%= yield %>
+</main>
+
+<div id="side" class="side">
+  <nav id="menu" class="generalMenu">
+    <h2 class="visuallyhidden"><%= t('views.application.menu.title') %></h2>
+    <ul>
+      <li><%= active_link_to t('views.application.menu.start_page'), root_path, active: :exclusive %></li>
+      <li class="active">
+        <%= active_link_to t('views.application.menu.notes.notes'), notes_path %>
+        <ul class="submenu">
+          <li><%= active_link_to t('views.application.menu.notes.list'), notes_path, active: :exclusive && pass_variable != 'note_create' %></li>
+          <li><%= active_link_to t('views.application.menu.notes.new'), new_note_path, active: pass_variable == 'note_create' || :exclusive %></li>
+        </ul>
+      </li>
+      <% if is_signed? %>
+      <li><%= link_to t('views.application.menu.sign_out'), sessions_path, method: :delete %></li>
+      <% else %>
+      <li><%= active_link_to t('views.application.menu.sign_in'), new_sessions_path, active: pass_variable == 'session_create' || :exclusive %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <form action="search.php" method="post" role="search" class="search-form">
+    <div>
+      <label class="visuallyhidden" for="search-input"><%= t('views.application.menu.search.search') %>:</label>
+      <input type="search" id="search-input" name="q" placeholder="<%= t('views.application.menu.search.placeholder') %>">
+      <button type="submit" name="submit" value="1" class="visuallyhidden"><%= t('views.application.menu.search.search') %>!</button>
+    </div>
+  </form>
+</div>
+
+<footer id="footer">Copyright © <%= Date.today.year %> by <a href="http://schizohatter.tk" rel="author">Schizohatter</a></footer>
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
+</html>

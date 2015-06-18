@@ -1,0 +1,87 @@
+article.note
+{
+  padding: 30px 0;
+}
+
+article.note h3
+{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+article.note p
+{
+  text-align: justify;
+}
+
+article.summary
+{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+article.summary h3
+{
+  margin-bottom: 20px;
+  flex: 1 100%;
+  text-align: right;
+}
+
+article.summary section
+{
+  width: 30%;
+  flex: 0 auto;
+  background: #fcfffc;
+  text-align: center;
+  font: 1.6em 'GeosansLight';
+  margin: 15px 0;
+}
+
+article.summary section p
+{
+  padding: 5% 10%;
+}
+
+article.summary section b
+{
+  font-size: 2.5em;
+  display: block;
+  color: #191;
+}
+
+article footer
+{
+  text-align: right;
+  font-size: 0.8em;
+}
+
+article footer span
+{
+  display: block;
+}
+
+article footer .options *:not(:first-child):before
+{
+  content: '| ';
+}
+
+article footer time
+{
+  font-weight: bolder;
+}
+
+a.article:not(:last-child)
+{
+  border-bottom: 1px solid #bbb;
+}
+
+article p
+{
+  margin: 5px 0;
+}
+
+article ul, article ol
+{
+  margin-left: 25px;
+}

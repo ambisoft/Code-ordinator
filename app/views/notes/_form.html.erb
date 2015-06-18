@@ -1,0 +1,16 @@
+    <%= form_for @note do |f| %>
+      <fieldset>
+        <legend><%= t('views.notes.form.title') %></legend>
+        <dl>
+          <div>
+            <dt><%= f.label :title, t('views.notes.form.note_title') %></dt>
+            <dd><%= f.text_field :title, placeholder: t('views.notes.form.note_title_placeholder') %></dd>
+          </div>
+          <div>
+            <dt><%= f.label :content, t('views.notes.form.content') %></dt>
+            <dd><%= f.text_area :content, placeholder: t('views.notes.form.content_placeholder'), rows: 15 %></dd>
+          </div>
+          <dd data-type="button" class="form-submit"><button name="submit" type="submit" id="submit"><%= t('views.notes.form.create') %></button></dd>
+        </dl>
+      </fieldset>
+  <% end %>

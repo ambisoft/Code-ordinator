@@ -1,0 +1,41 @@
+<%
+   do_truncate = false if do_truncate.nil?
+   edit = false if edit.nil?
+   options = false if options.nil?
+   checkbox = false if checkbox.nil?
+   content = note.content
+   content = markdown(content) unless edit
+   content = truncate_html(content, length: 450, omission: ' [...]') if do_truncate
+%>
+
+
+<article id="note-<%= note.id %>" class="note">
+  <h3><%= note.title %></h3>
+
+  <label><input type="checkbox" class="checkbox"> <%= t('views.notes.note.checkbox') %></label>
+
+  <%= content %>
+
+  <footer>
+
+    <span>
+      <%= t('views.notes.note.created_at') %>
+      <time datetime="<%= note.created_at %>"><%= note.created_at.strftime("%H:%M, %d.%m.%Y") %></time>
+    </span>
+
+    <% if note.created_at != note.updated_at %>
+        <span>
+          <%= t('views.notes.note.updated_at') %>
+          <time datetime="<%= note.updated_at %>"><%= note.updated_at.strftime("%H:%M, %d.%m.%Y") %></time>
+        </span>
+    <% end %>
+
+    <% if options %>
+        <span class="options">
+            <%= link_to t('views.notes.note.edit'), edit_note_path(note) %>
+            <%= link_to t('views.notes.note.delete'), "/notes/#{note.id}/delete" %>
+        </span>
+    <% end %>
+
+  </footer>
+</article>

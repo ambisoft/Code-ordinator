@@ -1,0 +1,111 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  views:
+    application:
+      title: "Code'ordinator"
+      subtitle: 'Coordinate your code!'
+      menu:
+        title: 'Main menu'
+        start_page: 'Start page'
+        notes:
+          notes: 'Notes'
+          list: 'list notes'
+          new: 'new note'
+        sign_out: 'Sign out'
+        sign_in: 'Sign in'
+        search:
+          search: 'Search'
+          placeholder: 'search'
+    sessions:
+      new:
+        title: 'Sign in'
+        email: 'E-mail'
+        password: 'Password'
+        sign_in: 'Sign in!'
+        email_placeholder: 'enter your e-mail here'
+        password_placeholder: 'your password goes here'
+      destroy:
+        title: 'Sign out'
+        goodbye: 'You have been successfully signed out. Thank you for visit, have a nice day :)'
+    notes:
+      new:
+        title: 'New note'
+      form:
+        title: "Manage note"
+        note_title: "Note's title"
+        note_title_placeholder: "put a title here"
+        content: "Note"
+        content_placeholder: "put a note's text here"
+        create: "Save note"
+      index:
+        title: 'All notes'
+      note:
+        created_at: 'Created at:'
+        updated_at: 'Updated at:'
+        edit: 'Edit'
+        delete: 'Delete'
+      show:
+        title: 'Note - %{title}'
+      edit:
+        title: 'Edit note'
+      delete:
+        title: 'Delete note'
+        confirmation: 'Are you sure you want to delete this note: <b>#%{notes_id} "%{notes_title}"</b>?'
+        approval: "Yes, I'm sure!"
+        refusal: "No, don't delete this one!"
+
+    pages:
+      index:
+        title: 'Main page'
+        summary:
+          title: 'Summary'
+          notes_count: 'Notes <b>%{notes_count}</b> written'
+
+  controllers:
+    sessions:
+      create:
+        success: 'You have been successfully logged in!'
+        invalid: 'Data you provided were incorrect!'
+        invalid_info: 'See "Notifications" for more information'
+    authenticate: 'You are not authorized to do this!'
+    authenticate_info: 'You need to login before doing that action'
+    antiflood: 'You have to wait %{time} seconds!'
+    antiflood_info: 'You are trying to do this action too often'
+    notes:
+      show:
+        not_found: 'Note to show could not be found!'
+      create:
+        invalid: "Note couldn't be added!"
+        invalid_info: "Correct mistakes listed in notifications"
+        success: "A note has been created!"
+      edit:
+        not_found: 'Note to edit could not be found!'
+      update:
+        not_found: 'Note to edit could not be found!'
+        success: 'Note updated successfully'
+        invalid: 'Data you provided were incorrect!'
+        invalid_info: 'See "Notifications" for more information'
+      delete:
+        not_found: 'Note to delete could not be found!'
+        success: 'Note has been deleted successfully'
+

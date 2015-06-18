@@ -1,0 +1,56 @@
+
+@keyframes popup
+{
+  from { opacity: 0; bottom: -40px; }
+  to { opacity: 1; bottom: 0; }
+}
+
+.flashbox
+{
+  width: 23vw;
+  position: fixed;
+  right: 0;
+  top: 5vh;
+  display: none;
+}
+
+.flashbox p
+{
+  margin-bottom: 10px;
+  padding: 3%;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  //animation: popup 0.2s linear;
+}
+
+.flashbox p span.close-button
+{
+  font-family: 'FontAwesome';
+  line-height: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.flashbox .info
+{
+  display: block;
+  font-weight: normal;
+  font-size: 0.8em;
+}
+
+.flashbox .success
+{
+  background: rgba(90, 170, 90, 0.9);
+}
+
+.flashbox .warning
+{
+  background: rgba(200, 90, 90, 0.9)
+}

@@ -1,0 +1,158 @@
+/* Forms in main view */
+main fieldset
+{
+  border: 0;
+}
+
+main fieldset legend
+{
+  width: 100%;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+main fieldset dl > div
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 3% 6%;
+}
+
+main form div.focus
+{
+  background: #fafafa;
+}
+
+main form dt
+{
+  width: 30px;
+  padding-top: 8px;
+  font-size: 1.2em;
+  flex: 1 auto;
+  align-content: space-around;
+}
+
+main form dd:not(.form-submit)
+{
+  width: 30px;
+  flex: 4 auto;
+}
+
+main dd:not(.form-submit) input, main textarea
+{
+  width: 100%;
+  font: 1.2em 'PT Sans';
+  padding: 0 3%;
+  height: 40px;
+  resize: none;
+}
+
+main textarea
+{
+  font-size: 1em;
+  min-height: 31px;
+  overflow-x: hidden;
+}
+
+main input
+{
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+
+main input:focus, main textarea:focus
+{
+  box-shadow: 0 3px 5px #dedede;
+  border-bottom: 1px solid #ddd;
+}
+
+main textarea
+{
+  width: 100%;
+  padding: 2% 3%;
+  height: auto;
+  border: 1px solid #ddd;
+}
+
+main dd.form-submit
+{
+  flex: 1 auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+main dd.form-submit button
+{
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+main dd.form-submit button:focus, main dd.form-submit button:hover
+{
+  color: #fff;
+  background: #3a3;
+}
+
+main dd.form-submit button::-moz-focus-inner
+{
+  border: 0;
+}
+
+.field_with_errors label
+{
+  color: #d33;
+}
+
+.field_with_errors input, .field_with_errors textarea
+{
+  border-color: #d33;
+}
+
+.field_with_errors textarea:focus
+{
+  border-color: #ddd;
+}
+
+/* Search form */
+.search-form
+{
+  text-align: center;
+}
+
+.search-form div
+{
+  position: relative;
+}
+
+.search-form div:before
+{
+  position: absolute;
+  top: 8px;
+  left: 25px;
+  font-family: 'FontAwesome';
+  content: "\f002";
+  color: #888;
+}
+
+.search-form input
+{
+  width: 90%;
+  padding: 8px 8px 8px 35px;
+  border: 1px solid #888;
+}
+
+.search-form input:focus
+{
+  border: 1px solid #ccc;
+}
+
+.search-form button
+{
+  margin-top: 10px;
+  border: 2px solid #888;
+}

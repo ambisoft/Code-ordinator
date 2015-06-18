@@ -1,0 +1,9 @@
+<h2><%= t('views.notes.delete.title') %></h2>
+
+<div id="delete-note" class="content">
+  <%= t('views.notes.delete.confirmation', notes_id: @note.id, notes_title: @note.title).html_safe %>
+  <div class="choice_box">
+    <%= link_to t('views.notes.delete.approval'), @note, method: :delete, class: 'approval' %>
+    <%= link_to t('views.notes.delete.refusal'), @note, class: 'refusal' %>
+  </div>
+</div>

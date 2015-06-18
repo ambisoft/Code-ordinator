@@ -1,0 +1,23 @@
+<h2><%= t('views.sessions.new.title') %></h2>
+
+<%= render 'shared/form_errors', :target => @session %>
+
+<div id="sign-in" class="content">
+  <%= form_for :session, url: sessions_path do |f| %>
+      <fieldset>
+        <legend><%= t('views.sessions.new.title') %></legend>
+        <dl>
+          <div>
+            <dt><%= f.label :email, t('views.sessions.new.email') %></dt>
+            <dd><%= f.text_field :email, placeholder: t('views.sessions.new.email_placeholder') %></dd>
+          </div>
+          <div>
+            <dt><%= f.label :password, t('views.sessions.new.password') %></dt>
+            <dd><%= f.password_field :password, placeholder: t('views.sessions.new.password_placeholder') %></dd>
+          </div>
+          <dd data-type="button" class="form-submit"><%= f.button t('views.sessions.new.sign_in') %></dd>
+        </dl>
+      </fieldset>
+  <% end %>
+</div>
+

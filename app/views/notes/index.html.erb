@@ -1,0 +1,9 @@
+<h2><%= t('views.notes.index.title') %></h2>
+
+<div id="all-notes" class="content">
+  <% @notes.each do |note| %>
+      <a href="<%= note_path(note) %>" class="block article">
+        <%= render 'note', note: note, do_truncate: true, checkbox: true %>
+      </a>
+  <% end %>
+</div>

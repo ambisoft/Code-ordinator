@@ -1,0 +1,5 @@
+<h2><%= t('views.notes.show.title', title: @note.title) %></h2>
+
+<div id="note-<%= @note.id %>" class="content">
+  <%= render 'note', note: @note, options: true %>
+</div>

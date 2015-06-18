@@ -1,0 +1,10 @@
+<h2><%= t('views.pages.index.title') %></h2>
+
+<div id="main-page" class="content">
+    <article id="summary" class="summary">
+      <h3><%= t('views.pages.index.summary.title') %></h3>
+      <section>
+        <p><%= t('views.pages.index.summary.notes_count', notes_count: @notes_count).html_safe %></p>
+      </section>
+    </article>
+</div>
