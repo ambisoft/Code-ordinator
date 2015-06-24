@@ -12,6 +12,7 @@
   right: 0;
   top: 5vh;
   display: none;
+  z-index: 999;
 }
 
 .flashbox p
@@ -22,6 +23,7 @@
   font-weight: bold;
   color: #fff;
   position: relative;
+  cursor: pointer;
   //animation: popup 0.2s linear;
 }
 

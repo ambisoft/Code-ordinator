@@ -1,9 +1,13 @@
 <h2><%= t('views.notes.index.title') %></h2>
 
 <div id="all-notes" class="content">
+  <div class="bar">
+    <ul class="options visuallyhidden">
+      <li><button id="notes-check-all"><%= t('views.notes.index.options.check_all') %></button></li>
+      <li><button id="notes-delete-checked"><%= t('views.notes.index.options.delete_checked') %></button></li>
+    </ul>
+  </div>
   <% @notes.each do |note| %>
-      <a href="<%= note_path(note) %>" class="block article">
-        <%= render 'note', note: note, do_truncate: true, checkbox: true %>
-      </a>
+      <%= render 'note', note: note, do_truncate: true %>
   <% end %>
 </div>

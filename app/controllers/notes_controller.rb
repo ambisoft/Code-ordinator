@@ -40,21 +40,61 @@ class NotesController < ApplicationController
     end
 
     def destroy
-        @note = Note.find_by_id!(params[:id])
-        if @note
-            @note.destroy
-            flash[:success] = [t('controllers.notes.delete.success')]
-        else
-            flash[:warning] = [t('controllers.notes.delete.not_found')]
+        succeed_notes = []
+        failed_notes = []
+
+        id = JSON.parse(params[:id])
+
+        id.each do |t|
+            note = Note.find_by_id(t)
+            if note
+                note.destroy
+                succeed_notes << t
+            else
+                failed_notes << t
+            end
         end
+
+        flash[:success] = [t('controllers.notes.destroy.success'), t('controllers.notes.destroy.success_info', id: succeed_notes.join(', '))] if succeed_notes.any?
+        flash[:warning] = [t('controllers.notes.destroy.not_found'), t('controllers.notes.destroy.not_found_info', id: failed_notes.join(', '))] if failed_notes.any?
+
         redirect_to notes_path
     end
 
     def delete
-        @note = Note.find_by_id(params[:id])
-        unless @note
-            flash[:warning] = [t('controllers.notes.delete.not_found')]
-            redirect_to notes_path
+        @found_notes = []
+        @not_found_notes = []
+
+        # Prepare variable
+        id = params[:id]
+        if /^[0-9]+$/.match(id)
+            id = [id]
+        else
+            id = JSON.parse(id)
+        end
+
+        # Sort ids by found/not found notes
+        id.each do |t|
+            (Note.exists?(id: t) ? @found_notes : @not_found_notes) << t
+        end
+
+        # Check whether there was one id or more
+        if id.length > 1
+            # Check if none of notes have been found or only some of them
+            if @found_notes.empty?
+                flash[:warning] = [t('controllers.notes.delete.none_of_notes_found')]
+                redirect_to notes_path
+                return
+            elsif @not_found_notes.any?
+                flash.now[:warning] = [t('controllers.notes.delete.some_of_notes_not_found'),
+                                       t('controllers.notes.delete.some_of_notes_not_found_info', id: @not_found_notes.join(', '))]
+            end
+        else
+            # Check if ONE note has been found
+            if @not_found_notes.any?
+                flash[:warning] = [t('controllers.notes.delete.not_found')]
+                redirect_to notes_path
+            end
         end
     end
 

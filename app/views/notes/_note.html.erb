@@ -2,17 +2,13 @@
    do_truncate = false if do_truncate.nil?
    edit = false if edit.nil?
    options = false if options.nil?
-   checkbox = false if checkbox.nil?
    content = note.content
    content = markdown(content) unless edit
    content = truncate_html(content, length: 450, omission: ' [...]') if do_truncate
 %>
 
-
-<article id="note-<%= note.id %>" class="note">
-  <h3><%= note.title %></h3>
-
-  <label><input type="checkbox" class="checkbox"> <%= t('views.notes.note.checkbox') %></label>
+<article id="note-<%= note.id %>" class="note" data-id="<%= note.id %>">
+  <h3><a href="<%= note_path(note) %>"><%= note.title %></a></h3>
 
   <%= content %>
 

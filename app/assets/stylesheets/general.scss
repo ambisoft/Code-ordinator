@@ -149,7 +149,55 @@ body > main
   padding: 40px 5%;
   background: #fff;
   order: 3;
+  position: relative;
 }
+
+.content .bar
+{
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.content .bar ul
+{
+  float: right;
+  display: inline-block;
+  border-bottom: 1px solid #333;
+  padding: 0 0 0px 10px;
+}
+
+.content .bar li
+{
+  margin-right: 5px;
+  display: inline-block;
+  color: #fff;
+  font-size: 0.9em;
+}
+
+.content .bar button
+{
+  cursor: pointer;
+  padding: 5px 15px;
+  border: 0;
+  background: #333;
+
+}
+
+.content .bar button:hover, .content .bar button:focus, .content .bar button::-moz-focus-inner
+{
+  background: #383;
+  outline: 0;
+  border: 0;
+}
+
+
+/*
+.content .bar ul li:not(:first-child)
+{
+  padding-left: 10px;
+  border-left: 1px solid #777;
+}
+*/
 
 h2
 {
