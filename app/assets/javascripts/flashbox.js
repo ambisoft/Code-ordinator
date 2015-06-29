@@ -51,6 +51,6 @@
 
     popup(offset);
 
-}).call(this);
+})();
 
 

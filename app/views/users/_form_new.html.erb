@@ -1,0 +1,14 @@
+    <%= form_for @user, url: {controller: 'users', action: 'create'} do |f| %>
+        <fieldset>
+          <legend><%= t('views.users.form_new.title') %></legend>
+          <dl>
+            <div>
+              <dt><%= f.label :email, t('views.users.form_new.email') %></dt>
+              <dd><%= f.email_field :email, placeholder: t('views.users.form_new.email_placeholder') %></dd>
+            </div>
+            <dd data-type="button" class="form-submit">
+              <button name="submit" type="submit" id="submit"><%= t('views.users.form_new.create') %></button>
+            </dd>
+          </dl>
+        </fieldset>
+    <% end %>

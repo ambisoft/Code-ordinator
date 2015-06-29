@@ -36,6 +36,7 @@ en:
         search:
           search: 'Search'
           placeholder: 'search'
+        invite: 'Invite a friend'
     sessions:
       new:
         title: 'Sign in'
@@ -83,6 +84,31 @@ en:
         summary:
           title: 'Summary'
           notes_count: 'Notes <b>%{notes_count}</b> written'
+    users:
+      form_new:
+        title: 'Just provide us his e-mail'
+        email: 'E-mail'
+        email_placeholder: 'e-mail of friend you want to invite'
+        create: 'Invite!'
+      new:
+        title: "Invite a friend to Code'ordinator"
+      create:
+        title: 'Invitation sent!'
+        content: 'An activation e-mail has been sent. After clicking in link, your friend will have to set his very own password!'
+      not_activated:
+        title: 'Whoa, what are you doing here?'
+        content: 'You should not be here... unless you know the temporary password to your account. Anyway, your account has not been activated yet.'
+      activate:
+        title: 'Account activation'
+        content: 'To finish your activation just choose a password (enter it twice, once per field)'
+        not_found: 'The activation token you gave us in URI could not be found in our database. Check it twice, if it is the same as in e-mail you received from us.'
+      form_activation:
+        title: 'Enter password and go!'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+        password_placeholder: 'at least 7 chars'
+        password_confirmation_placeholder: 'the same password as above'
+        activate: 'Activate your account!'
 
   controllers:
     sessions:
@@ -118,4 +144,11 @@ en:
         some_of_notes_not_found: 'Some of notes to delete could not be found!'
         some_of_notes_not_found_info: "These notes' ids are: %{id}"
         not_found: 'Note to delete could not be found!'
+    users:
+      create:
+        success: 'Invitation e-mail has been sent!'
+        invalid: 'E-mail you provided was invalid'
+        invalid_info: 'See "Notifications" for more information'
+      activate:
+        not_found: 'Requested activation token has not been found!'
 

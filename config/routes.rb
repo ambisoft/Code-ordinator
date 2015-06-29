@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
     root 'pages#index'
 
-    # --------- Users temporally disabled
-    # get '/user/:id/delete' => 'users#delete'
-    # get '/user/not_activated' => 'users#not_activated'
-    # resource :user, only: [:index, :not_activated]
+    get '/user/:id/delete' => 'users#delete'
+    delete '/user' => 'users#destroy'
+    get '/user/not_activated' => 'users#not_activated'
+    get '/user/activate/:token' => 'users#activate'
+    patch '/user/activate/:token' => 'users#set_activation'
+    get '/invite' => 'users#new'
+    post '/invite' => 'users#create'
 
     get '/session' => 'sessions#new'
     resource :sessions, path: 'session', only: [:new, :create, :destroy]

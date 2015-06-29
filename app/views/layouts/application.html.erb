@@ -42,6 +42,7 @@
   <nav id="menu" class="generalMenu">
     <h2 class="visuallyhidden"><%= t('views.application.menu.title') %></h2>
     <ul>
+      <% if is_signed? %>
       <li><%= active_link_to t('views.application.menu.start_page'), root_path, active: :exclusive %></li>
       <li class="active">
         <%= active_link_to t('views.application.menu.notes.notes'), notes_path %>
@@ -50,7 +51,7 @@
           <li><%= active_link_to t('views.application.menu.notes.new'), new_note_path, active: pass_variable == 'note_create' || :exclusive %></li>
         </ul>
       </li>
-      <% if is_signed? %>
+      <li><%= active_link_to t('views.application.menu.invite'), invite_path %></li>
       <li><%= link_to t('views.application.menu.sign_out'), sessions_path, method: :delete %></li>
       <% else %>
       <li><%= active_link_to t('views.application.menu.sign_in'), new_sessions_path, active: pass_variable == 'session_create' || :exclusive %></li>
@@ -58,7 +59,7 @@
     </ul>
   </nav>
 
-  <form action="search.php" method="post" role="search" class="search-form">
+  <form action="" method="post" role="search" class="search-form">
     <div>
       <label class="visuallyhidden" for="search-input"><%= t('views.application.menu.search.search') %>:</label>
       <input type="search" id="search-input" name="q" placeholder="<%= t('views.application.menu.search.placeholder') %>">

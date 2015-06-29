@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
     before_action :authenticate!
+    before_action :antiflood!, only: [:update, :create, :destroy]
 
     def index
         @user = User.find_by_id!(session[:user]['id'])
@@ -7,7 +8,8 @@ class NotesController < ApplicationController
     end
 
     def show
-        @note = Note.find_by_id(params[:id])
+        @user = User.find_by_id!(session[:user]['id'])
+        @note = @user.notes.find_by_id(params[:id])
         unless @note
             flash[:warning] = [t('controllers.notes.show.not_found')]
             redirect_to notes_path
@@ -15,7 +17,8 @@ class NotesController < ApplicationController
     end
 
     def edit
-        @note = Note.find_by_id(params[:id])
+        @user = User.find_by_id!(session[:user]['id'])
+        @note = @user.notes.find_by_id(params[:id])
         unless @note
             flash[:warning] = [t('controllers.notes.edit.not_found')]
             redirect_to notes_path
@@ -23,7 +26,8 @@ class NotesController < ApplicationController
     end
 
     def update
-        @note = Note.find_by_id(params[:id])
+        @user = User.find_by_id!(session[:user]['id'])
+        @note = @user.notes.find_by_id(params[:id])
         unless @note
             flash[:warning] = [t('controllers.notes.update.not_found')]
             redirect_to notes_path
@@ -40,13 +44,14 @@ class NotesController < ApplicationController
     end
 
     def destroy
+        @user = User.find_by_id!(session[:user]['id'])
         succeed_notes = []
         failed_notes = []
 
         id = JSON.parse(params[:id])
 
         id.each do |t|
-            note = Note.find_by_id(t)
+            note = @user.notes.find_by_id(t)
             if note
                 note.destroy
                 succeed_notes << t
@@ -62,6 +67,7 @@ class NotesController < ApplicationController
     end
 
     def delete
+        @user = User.find_by_id!(session[:user]['id'])
         @found_notes = []
         @not_found_notes = []
 
@@ -75,7 +81,7 @@ class NotesController < ApplicationController
 
         # Sort ids by found/not found notes
         id.each do |t|
-            (Note.exists?(id: t) ? @found_notes : @not_found_notes) << t
+            (@user.notes.exists?(id: t) ? @found_notes : @not_found_notes) << t
         end
 
         # Check whether there was one id or more
@@ -99,7 +105,8 @@ class NotesController < ApplicationController
     end
 
     def new
-        @note = Note.new
+        @user = User.find_by_id!(session[:user]['id'])
+        @note = @user.notes.new
         pass_variable 'note_create'
     end
 

@@ -2,6 +2,7 @@ class PagesController < ApplicationController
     before_action :authenticate!
 
     def index
-        @notes_count = Note.count
+        @user = User.find_by_id!(session[:user]['id'])
+        @notes_count = @user.notes.count
     end
 end

@@ -39,4 +39,4 @@
             location.href = '/notes/' + JSON.stringify(gatherNotes()) + '/delete';
     });
 
-}).call(this);
+})();
