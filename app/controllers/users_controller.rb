@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate!, except: [:not_activated, :activate, :set_activation]
-    before_action :not_authenticate!, only: [:not_activated , :activate, :set_activation]
+    before_action :check_for_session!, only: [:not_activated , :activate, :set_activation]
     before_action :antiflood!, only: [:create, :destroy, :set_activation]
 
     def new

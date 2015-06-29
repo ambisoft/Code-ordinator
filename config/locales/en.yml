@@ -151,4 +151,7 @@ en:
         invalid_info: 'See "Notifications" for more information'
       activate:
         not_found: 'Requested activation token has not been found!'
+        success: 'Your account has been activated!'
+        invalid: 'Account could not be activated!'
+        invalid_info: 'See "Notifications" for more information'
 

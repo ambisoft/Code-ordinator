@@ -38,12 +38,4 @@ class SessionsController < ApplicationController
     def session_params
         params.require(:session).permit(:email, :password)
     end
-    def check_for_session!
-        if session[:user]
-            redirect_to root_path
-            false
-        else
-            true
-        end
-    end
 end

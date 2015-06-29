@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery with: :exception
 
-    helper_method :antiflood!, :authenticate!, :is_signed?, :pass_variable
+    helper_method :antiflood!, :authenticate!, :is_signed?, :pass_variable, :check_for_session!
 
     def antiflood! (now = false)
         antiflood = 5 # in seconds
@@ -33,14 +33,6 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def not_authenticate!
-        if session[:user]
-            redirect_to root_path
-        else
-            true
-        end
-    end
-
     def is_signed?
         session[:user] ? true : false
     end
@@ -50,6 +42,15 @@ class ApplicationController < ActionController::Base
             @variable = variable
         else
             @variable
+        end
+    end
+
+    def check_for_session!
+        if session[:user]
+            redirect_to root_path
+            false
+        else
+            true
         end
     end
 end
