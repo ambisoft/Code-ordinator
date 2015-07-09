@@ -4,12 +4,6 @@ article.note
   position: relative;
 }
 
-article.note h3
-{
-  text-align: center;
-  margin-bottom: 15px;
-}
-
 article.note p
 {
   text-align: justify;
@@ -37,6 +31,7 @@ article.summary section
   text-align: center;
   font: 1.6em 'GeosansLight';
   margin: 15px 0;
+  border: 1px dashed #cdc;
 }
 
 article.summary section p

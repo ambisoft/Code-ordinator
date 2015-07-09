@@ -3,6 +3,7 @@
 <%= render 'shared/form_errors', :target => @user %>
 
 <div id="activate-user" class="content">
+  <h3><%= t('views.users.activate.subtitle', email: @user.email) %></h3>
   <p><%= t('views.users.activate.content') %></p>
   <%= render 'form_activation' %>
 </div>

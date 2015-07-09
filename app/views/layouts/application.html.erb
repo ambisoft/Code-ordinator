@@ -68,7 +68,10 @@
   </form>
 </div>
 
-<footer id="footer">Copyright © <%= Date.today.year %> by <a href="http://schizohatter.tk" rel="author">Schizohatter</a></footer>
+<footer id="footer">
+  <p>Copyright © <%= Date.today.year %> by <a href="http://schizohatter.tk" rel="author">Schizohatter</a></p>
+  <p class="small"><%= t('views.application.footer.cookies') %></p>
+</footer>
 
 <%= javascript_include_tag 'application' %>
 </body>

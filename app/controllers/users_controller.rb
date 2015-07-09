@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         if @user
             if @user.update(activation_params)
                 flash[:success] = [t('controllers.users.activate.success')]
-                SessionsController.new.create({email: @user.email, password: params[:user]['password']})
+                redirect_to new_sessions_path
             else
                 flash.now[:warning] = [t('controllers.users.activate.invalid'), t('controllers.users.activate.invalid_info')]
                 render 'activate'

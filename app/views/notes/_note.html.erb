@@ -13,6 +13,10 @@
   <%= content %>
 
   <footer>
+    <span>
+      <%= t('views.notes.note.tags') %>
+      <%= (note.tag_list.map {|tag| '#' + tag }).join(' ') %>
+    </span>
 
     <span>
       <%= t('views.notes.note.created_at') %>

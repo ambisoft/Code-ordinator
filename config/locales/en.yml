@@ -37,6 +37,8 @@ en:
           search: 'Search'
           placeholder: 'search'
         invite: 'Invite a friend'
+      footer:
+        cookies: 'Application uses cookies (data stored on your computer). It uses them to provide better user-experience, NOT to spy on You.'
     sessions:
       new:
         title: 'Sign in'
@@ -58,6 +60,8 @@ en:
         content: "Note"
         content_placeholder: "put a note's text here"
         create: "Save note"
+        tags: 'Tags'
+        tags_placeholder: 'put tags here, with comma delimiter'
       index:
         title: 'All notes'
         options:
@@ -69,6 +73,7 @@ en:
         edit: 'Edit'
         delete: 'Delete'
         checkbox: 'check'
+        tags: 'Tags:'
       show:
         title: 'Note - %{title}'
       edit:
@@ -100,6 +105,7 @@ en:
         content: 'You should not be here... unless you know the temporary password to your account. Anyway, your account has not been activated yet.'
       activate:
         title: 'Account activation'
+        subtitle: 'Activation for: %{email}'
         content: 'To finish your activation just choose a password (enter it twice, once per field)'
         not_found: 'The activation token you gave us in URI could not be found in our database. Check it twice, if it is the same as in e-mail you received from us.'
       form_activation:
