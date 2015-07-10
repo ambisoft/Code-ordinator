@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
+
     before_action :check_for_session!, except: [:destroy]
     before_action :antiflood!, only: [:create]
+
+    include SessionsHelper
 
     def new
         @session = Session.new
@@ -16,10 +19,7 @@ class SessionsController < ApplicationController
                 return
             end
 
-            session[:user] = Hash.new
-            session[:user][:id] = user.id
-            session[:user][:email] = user.email
-            session[:user][:level] = user.level
+            sign_in user
 
             flash[:success] = [t('controllers.sessions.create.success')]
             redirect_to root_path
