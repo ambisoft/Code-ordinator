@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+    include SessionsHelper
+
     before_action :authenticate!, except: [:not_activated, :activate, :set_activation]
     before_action :check_for_session!, only: [:not_activated , :activate, :set_activation]
     before_action :antiflood!, only: [:create, :destroy, :set_activation]
@@ -39,8 +42,9 @@ class UsersController < ApplicationController
         @user = User.find_by_activation_token(params[:token])
         if @user
             if @user.update(activation_params)
-                flash[:success] = [t('controllers.users.activate.success')]
-                redirect_to new_sessions_path
+                sign_in @user
+                flash[:success] = [t('controllers.sessions.create.success')]
+                redirect_to root_path
             else
                 flash.now[:warning] = [t('controllers.users.activate.invalid'), t('controllers.users.activate.invalid_info')]
                 render 'activate'
